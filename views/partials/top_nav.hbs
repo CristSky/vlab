@@ -8,11 +8,13 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- %= link_to "Pesquisa-Operacional", root_path, class: "navbar-brand" %-->
-        <a class="navbar-brand" href="{{>link-to "test"}}"><i class="fa fa-flask"></i> V-Lab</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-flask"></i> V-Lab</a>
         </div>
+
         <div class="collapse navbar-collapse" id="disboard">
             <ul class="nav navbar-nav">
-                <li>TODO</li>
+                {{active_link 'Sobre' 'about' ref}}
+                {{active_link 'Enviar bit' 'bit_up' ref}}
             </ul>
         </div>
     </div>
