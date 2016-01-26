@@ -30,14 +30,14 @@ hbs.registerHelper('link', function (text, options) {
     );
 });
 
-hbs.registerHelper('active_link', function (text, id, ref) {
+hbs.registerHelper('active_link', function (text, link, id, ref) {
     var li = "<li";
     if (id == ref)
         li = "<li class='active'";
 
     console.log(text,id, ref);
     return new hbs.SafeString(
-        li + "><a href='/upload'>" + text + "</a></li>"
+        li + "><a href='/" + link + "'>" + text + "</a></li>"
     );
 });
 

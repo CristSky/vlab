@@ -3,11 +3,12 @@
  */
 var express = require('express');
 var router = express.Router();
-
+var path = require('path');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('bit_upload', {title: 'V-Lab - Upload', ref: 'bit_up'});
+    var ref = path.basename(__filename, '.js'); // *nome da view deve ser o mesmo da rota
+    res.render(ref, {title: 'V-Lab - Upload', ref: ref});
 });
 
 module.exports = router;
