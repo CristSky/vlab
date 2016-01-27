@@ -3,11 +3,12 @@
  */
 var express = require('express');
 var router = express.Router();
-
+var path = require('path');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('about', {title: 'V-Lab - Sobre', ref: 'about'});
+    var ref = path.basename(__filename, '.js'); // nome da view deve ser o mesmo da rota
+    res.render(ref, {title: 'V-Lab - Sobre', ref: ref});
 });
 
 module.exports = router;

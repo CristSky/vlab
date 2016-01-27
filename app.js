@@ -1,4 +1,5 @@
 var express = require('express');
+var multer = require('multer'); // multipart middleware handler
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -6,11 +7,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('hbs');
 
+// ###### multer config ######
+var upload = multer({ dest: 'bit_files/' }); // uploads dir
+
+
 // ###### controller ######
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var bit_upload = require('./routes/bit_upload');
+var upload_form = require('./routes/bit_upload');
 var about = require('./routes/about');
+
 
 // ##### Handlebars partials views #####
 hbs.registerPartials(__dirname + '/views/partials');
@@ -35,7 +40,6 @@ hbs.registerHelper('active_link', function (text, link, id, ref) {
     if (id == ref)
         li = "<li class='active'";
 
-    console.log(text,id, ref);
     return new hbs.SafeString(
         li + "><a href='/" + link + "'>" + text + "</a></li>"
     );
@@ -43,6 +47,27 @@ hbs.registerHelper('active_link', function (text, link, id, ref) {
 
 
 var app = express();
+
+/*
+// ###### multer config ######
+app.use(multer({
+    dest: './bit_files/',
+    limits: {
+        fieldNameSize: 50,
+        files: 1,
+        fields: 5
+        //fileSize: 1024 * 1024
+    },
+    rename: function (fieldname, filename) {
+        return filename;
+    },
+    onFileUploadStart: function (file) {
+        if (file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            return false;
+        }
+    }
+}));
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,8 +82,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ###### rotas ######
 app.use('/', routes);
-app.use('/users', users);
-app.use('/upload', bit_upload);
+app.use('/upload', upload_form);
 app.use('/about', about);
 
 // catch 404 and forward to error handler

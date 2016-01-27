@@ -3,3 +3,9 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: #aaa;
 }
+
+#filepanel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

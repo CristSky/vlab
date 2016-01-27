@@ -1,2 +1,28 @@
 {{> top_nav}}
-<pre>Titulo: {{title}} Ref: {{ref}}</pre>
+
+<div class="container">
+    <div class="panel panel-primary" id="filepanel">
+        <div class="panel-heading">Selecione o arquivo .bit</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+
+
+                    <!--a class="file-input-wrapper btn btn-default">
+
+                        <span>Selecionar .bit</span>
+
+                        <input id="inputBit" type="file" data-filename-placement="inside">
+
+                    </a-->
+
+
+                    <label class="control-label">Select File</label>
+                    <input id="inputBit" name="bit_file" type="file" multiple class="file-loading">
+                    <br>
+                    <input class="btn btn-default" type="submit" value="Upload Image" name="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
