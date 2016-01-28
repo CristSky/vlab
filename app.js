@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var hbs = require('hbs');
 
 // ###### multer config ######
-var upload = multer({ dest: 'bit_files/' }); // uploads dir
+//var upload = multer({ dest: 'run_impact/' }); // uploads dir
 
 
 // ###### controller ######
@@ -51,7 +51,7 @@ var app = express();
 /*
 // ###### multer config ######
 app.use(multer({
-    dest: './bit_files/',
+    dest: './run_impact/',
     limits: {
         fieldNameSize: 50,
         files: 1,
