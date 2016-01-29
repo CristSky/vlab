@@ -7,8 +7,8 @@ var path = require('path');
 var multer = require('multer');
 var fs = require('fs-extra');
 var exec = require('child_process').execFile;
-var debug;
 var ref = path.basename(__filename, '.js'); // nome da view deve ser o mesmo da rota
+var debug;
 
 
 /* GET home page. */
@@ -23,7 +23,7 @@ router.post('/', multer({dest: './bit_upload/'}).single('bit_file'), function (r
     try {
         fs.copySync('./bit_upload/' + target, './run_impact/main.bit', {replace: true}, function (err) {
             if (err) {
-                throw err;
+                throw err; //todo mostrar erro
             } else {
 
             }
